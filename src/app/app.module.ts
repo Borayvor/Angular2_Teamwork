@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
 
 // Components
 import { AppComponent } from './app.component';
@@ -15,7 +14,7 @@ import { FilterUsersPipe } from './app_core/pipes/filter-users.pipe';
 import { UserService } from './app_core/services/user.service';
 
 // Routes
-import { appRoutes } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ import { appRoutes } from './app.routes';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
