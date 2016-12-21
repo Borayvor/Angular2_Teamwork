@@ -1,4 +1,4 @@
-# TeamworkApp
+# Angular2_Teamwork
 
 Run on Github pages : <a target="_blank" href="https://borayvor.github.io/Angular2_Teamwork/">Start link</a>
 
