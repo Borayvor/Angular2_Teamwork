@@ -1,3 +1,5 @@
+import './app_rxjs';
+
 import { Component } from '@angular/core';
 
 @Component({
