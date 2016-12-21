@@ -1,6 +1,6 @@
 # TeamworkApp
 
-Run on Github pages : [Start link](https://borayvor.github.io/Angular2_Teamwork/)
+Run on Github pages : [Start link](https://borayvor.github.io/Angular2_Teamwork/){:target="_blank"}
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
