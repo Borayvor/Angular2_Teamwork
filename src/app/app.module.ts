@@ -3,24 +3,31 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-// Components
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+// Routes
+import { AppRoutingModule } from './app-routing.module';
 
 // Pipes
 import { FilterUsersPipe } from './app_core/pipes/filter-users.pipe';
 
 //Services
+import { DataService } from './app_core/services/data.service';
 import { UserService } from './app_core/services/user.service';
 
-// Routes
-import { AppRoutingModule } from './app-routing.module';
+// Components
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { UserDetailsComponent } from './home/user-details/user-details.component';
 
 @NgModule({
   declarations: [
+    FilterUsersPipe,
     AppComponent,
-    HomeComponent,
-    FilterUsersPipe  
+    HomeComponent,    
+    RegisterComponent,
+    LoginComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,10 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [
+    DataService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

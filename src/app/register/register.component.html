@@ -1,0 +1,33 @@
+<h4>Register a new user.</h4>
+<hr />
+<form class="form-horizontal" role="form" (ngSubmit)="submitForm()">
+  <div class="form-group row">
+    <label for="app-register-email" class="col-md-2 control-label">Email</label>
+    <div class="col-md-10">
+      <input id="app-register-email" class="form-control" type="email" name="email" value="">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="app-register-userPhoto" class="col-md-2 control-label">User Photo</label>
+    <div class="col-md-10">
+      <input id="app-register-userPhoto" class="form-control" type="url" name="userPhoto" value="">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="app-register-password" class="col-md-2 control-label">Password</label>
+    <div class="col-md-10">
+      <input id="app-register-password" class="form-control" type="password" name="password" value="">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="app-register-confirmPassword" class="col-md-2 control-label">Confirm password</label>
+    <div class="col-md-10">
+      <input id="app-register-confirmPassword" class="form-control" type="password" name="confirmPassword" value="">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+      <input type="submit" value="Register" class="btn btn-success pull-right" />
+    </div>
+  </div>
+</form>

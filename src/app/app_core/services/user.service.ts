@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
 
-import { User } from './../models/user.model';
+import { DataService } from './data.service';
 
 @Injectable()
 export class UserService {
+  private usersUrl: string = 'Users';
 
-  constructor(private http: Http) { }
+  constructor(private data: DataService) { }
+  
+  getAllUsers(){
+    return this.data.get(this.usersUrl);
+  }
 
 }
