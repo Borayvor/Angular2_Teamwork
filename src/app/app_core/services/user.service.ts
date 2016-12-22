@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+
 import { DataService } from './data.service';
+
+import { UserModel } from './../models/user.model';
 
 @Injectable()
 export class UserService {
@@ -8,7 +12,7 @@ export class UserService {
 
   constructor(private data: DataService) { }
   
-  getAllUsers(){
+  getAllUsers(): Observable<UserModel[]>{
     return this.data.get(this.usersUrl);
   }
 

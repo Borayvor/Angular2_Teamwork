@@ -37,7 +37,13 @@ export class DataService {
   post(url: string, body: Object): Observable<any[]> {
     return this.http.post(this.baseUrl + url, body, this.optionsPost)
       .map(this.extractData)
-      .catch(this.handleError);;
+      .catch(this.handleError);
+  }
+
+  put(url: string, body: Object): Observable<any[]> {
+    return this.http.put(this.baseUrl + url, body, this.optionsPost)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {
