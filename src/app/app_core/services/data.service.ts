@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
-  private baseUrl: string = 'http://api.backendless.com/v1/data/';
+  private baseUrl: string = 'https://api.backendless.com/v1/data/';
   private applicationId = 'EB364692-B174-248D-FF33-8BBBF9FD7800';
   private secretKey = '094F99A1-D1AB-6AB6-FF14-689B8BF40900';
   private applicationType = 'REST';
