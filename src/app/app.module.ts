@@ -10,8 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { FilterUsersPipe } from './app_core/pipes/filter-users.pipe';
 
 //Services
-import { DataService } from './app_core/services/data.service';
+import { BaseService } from './app_core/services/base.service';
 import { UserService } from './app_core/services/user.service';
+import { AlertService } from './app_core/services/alert.service';
+import { AuthGuardService } from './app_core/services/auth-guard.service';
+import { AuthenticationService } from './app_core/services/authentication.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -36,8 +39,11 @@ import { UserDetailsComponent } from './home/user-details/user-details.component
     AppRoutingModule
   ],
   providers: [
-    DataService,
-    UserService
+    BaseService,
+    UserService,
+    AlertService,
+    AuthGuardService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import './app_rxjs';
 
 import { Component, OnInit } from '@angular/core';
+import { AuthGuardService } from './app_core/services/auth-guard.service';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +13,13 @@ export class AppComponent implements OnInit {
   private isAuthenticated: boolean;
   private user: {};
 
-  constructor() {
-    this.title = 'App works !'
-    this.isAuthenticated = false;
+  constructor(private authGuard: AuthGuardService) {
+    this.title = 'App works !';
+
   }
 
   ngOnInit() {
-
-    this.user = {
-      email: 'qwe@qwe.qwe'
-    };
+    this.isAuthenticated = this.authGuard.canActivate();
+    
   }
 }

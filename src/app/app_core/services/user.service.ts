@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
-
+import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { DataService } from './data.service';
+import { BaseService } from './base.service';
 
 import { UserModel } from './../models/user.model';
 
 @Injectable()
 export class UserService {
-  private usersUrl: string = 'Users';
-
-  constructor(private data: DataService) { }
+  private usersUrl: string;
   
-  getAllUsers(): Observable<UserModel[]>{
+  constructor(private data: BaseService) {
+    this.usersUrl = '/data/Users';    
+  }
+
+  getAllUsers(): Observable<any> {
     return this.data.get(this.usersUrl);
   }
 
 }
+
