@@ -14,10 +14,10 @@ export class BaseService {
   private headersPost: Headers;
   private optionsGet: RequestOptions;
   private optionsPost: RequestOptions;
-  private currentUserToken: string;
+  // private currentUserToken: string;
 
   constructor(private http: Http) {
-    this.currentUserToken = localStorage.getItem('currentUser') !== null ? localStorage.getItem('currentUser')['token'] : '';
+    //this.currentUserToken = localStorage.getItem('currentUser') !== null ? localStorage.getItem('currentUser')['token'] : 'token';
 
     this.headersGet = new Headers({
       'application-id': this.applicationId,
@@ -62,6 +62,7 @@ export class BaseService {
 
   private extractData(res: Response) {
     let body = res.json();
+    
     // console.log(body);
     return body || {};
   }
