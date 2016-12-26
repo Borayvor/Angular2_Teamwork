@@ -51,7 +51,7 @@ export class AuthenticationService {
 
   getCurrentUser() {
     let user = this.currentUser;
-    
+    console.log('AuthenticationService getCurrentUser');
     console.log(user);
 
     return user;

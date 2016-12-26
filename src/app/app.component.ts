@@ -1,6 +1,6 @@
 import './app_rxjs';
 
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './app_core/services/authentication.service';
@@ -14,7 +14,7 @@ import { UserModel } from './app_core/models/user.model';
   styleUrls: ['./app.component.css'],
   providers: [AuthenticationService, UserService]
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
   private title: string;
   private isAuthenticated: boolean;
   private user: UserModel;
@@ -32,16 +32,12 @@ export class AppComponent implements OnInit, OnChanges {
     this.setCurrentUser();
   }
 
-  ngOnChanges() {
-    this.setCurrentUser();
-  }
-
   logout(){
     this.authenticationService.logout();
   }
 
   private setCurrentUser(): void {
-    this.user = this.authenticationService.getCurrentUser();
+    this.user = this.authenticationService.getCurrentUser();    
     this.isAuthenticated = this.authenticationService.isAuthenticated();
   }
 

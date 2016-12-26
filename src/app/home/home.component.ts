@@ -7,8 +7,7 @@ import { UserModel } from './../app_core/models/user.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  providers: [UserService]
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   private title: string;
