@@ -14,11 +14,11 @@ export class UserService {
     this.usersUrl = '/data/Users';
   }
 
-  getAllUsers(): Observable<any> {
+  getAllUsers(): Observable<UserModel[]> {
     return this.data.get(this.usersUrl);
   }
 
-  getUserById(id: string): Observable<any> {        
+  getUserById(id: string): Observable<UserModel> {        
     return this.data.get(this.usersUrl + '/' + id);
   }
 

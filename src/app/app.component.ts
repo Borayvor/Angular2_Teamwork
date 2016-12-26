@@ -11,8 +11,7 @@ import { UserModel } from './app_core/models/user.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [AuthenticationService, UserService]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   private title: string;
@@ -21,7 +20,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router, 
-    private data: UserService, 
+    private userService: UserService, 
     private authenticationService: AuthenticationService
     ) {
     this.title = 'App works !';
@@ -37,7 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   private setCurrentUser(): void {
-    this.user = this.authenticationService.getCurrentUser();    
+    this.user = this.authenticationService.getCurrentUser(); 
     this.isAuthenticated = this.authenticationService.isAuthenticated();
   }
 

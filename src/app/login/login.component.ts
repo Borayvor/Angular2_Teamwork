@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from './../app_core/services/authentication.service';
 import { AlertService } from './../app_core/services/alert.service';
 
-import { UserModel } from './../app_core/models/user.model';
+import { UserLoginModel } from './../app_core/models/user-login.model';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { UserModel } from './../app_core/models/user.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit { 
-  private model: UserModel;
+  private model: UserLoginModel;
   private loading: boolean;
   private returnUrl: string;
 
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private alertService: AlertService
   ) {   
-    this.model = new UserModel;
+    this.model = new UserLoginModel;
     this.loading = false;
   }
 

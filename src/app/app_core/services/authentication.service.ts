@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { BaseService } from './base.service';
 import { AlertService } from './alert.service';
@@ -32,7 +32,8 @@ export class AuthenticationService {
     this.baseService.post(this.loginUrl, JSON.stringify({ login: email, password: password }))
       .subscribe(
       data => {
-        this.currentUser = data
+        this.currentUser = data;       
+        localStorage.setItem('cuurentUser', JSON.stringify(this.currentUser));
         localStorage.setItem(this.AUTHENTICATION_TOKEN_NAME, JSON.stringify({ token: this.currentUser['user-token'] }));
         this.router.navigate([returnUrl]);
       },
@@ -44,17 +45,17 @@ export class AuthenticationService {
 
   logout(): void {
     localStorage.removeItem(this.AUTHENTICATION_TOKEN_NAME);
+    localStorage.removeItem('cuurentUser');
     // console.log('logout');
     this.baseService.get(this.logoutUrl);
-    this.router.navigate([this.baseUrl]);
+    this.router.navigate(['/login']);
   }
 
-  getCurrentUser() {
-    let user = this.currentUser;
-    console.log('AuthenticationService getCurrentUser');
-    console.log(user);
 
-    return user;
+  getCurrentUser() {    
+    let result = this.isAuthenticated() ? JSON.parse(localStorage.getItem('cuurentUser')) : this.currentUser;
+
+    return result;
   }
 
   isAuthenticated(): boolean {

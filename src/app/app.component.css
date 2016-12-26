@@ -1,0 +1,12 @@
+.flex-middle{
+    display: flex;
+    align-items: center;
+}
+
+.btn-link{
+    border: none !important;
+}
+
+.btn-link:focus{
+    border: none !important;
+}
