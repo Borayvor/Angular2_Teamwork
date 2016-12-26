@@ -6,14 +6,18 @@ import { BaseService } from './base.service';
 import { AlertService } from './alert.service';
 
 import { UserModel } from './../models/user.model';
+import { UserLoginModel } from './../models/user-login.model';
+import { UserRegisterModel } from './../models/user-register.model';
 
 @Injectable()
 export class AuthenticationService {
   private AUTHENTICATION_TOKEN_NAME: string;
+  private registerUrl: string;
   private loginUrl: string;
   private logoutUrl: string;
   private baseUrl: string;
   private currentUser: UserModel;
+  private loginUser: UserLoginModel;
 
   constructor(
     private baseService: BaseService,
@@ -22,24 +26,36 @@ export class AuthenticationService {
     private alertService: AlertService
   ) {
     this.AUTHENTICATION_TOKEN_NAME = 'authentication';
+    this.registerUrl = '/users/register';
     this.loginUrl = '/users/login';
     this.logoutUrl = '/users/logout';
     this.baseUrl = '';
     this.currentUser = new UserModel;
   }
 
-  login(email: string, password: string, loading: boolean, returnUrl: string = this.baseUrl): void {
+  register(user: UserRegisterModel) {
+    this.baseService.post(this.registerUrl, JSON.stringify(user))
+      .subscribe(
+      data => {
+        this.loginUser = data;
+        this.login(user.email, user.password)
+      },
+      error => {
+        this.alertService.error(error);       
+      });
+  }
+
+  login(email: string, password: string, returnUrl: string = this.baseUrl): void {
     this.baseService.post(this.loginUrl, JSON.stringify({ login: email, password: password }))
       .subscribe(
       data => {
-        this.currentUser = data;       
+        this.currentUser = data;
         localStorage.setItem('cuurentUser', JSON.stringify(this.currentUser));
         localStorage.setItem(this.AUTHENTICATION_TOKEN_NAME, JSON.stringify({ token: this.currentUser['user-token'] }));
         this.router.navigate([returnUrl]);
       },
       error => {
         this.alertService.error(error);
-        loading = false;
       });
   }
 
@@ -52,7 +68,7 @@ export class AuthenticationService {
   }
 
 
-  getCurrentUser() {    
+  getCurrentUser() {
     let result = this.isAuthenticated() ? JSON.parse(localStorage.getItem('cuurentUser')) : this.currentUser;
 
     return result;

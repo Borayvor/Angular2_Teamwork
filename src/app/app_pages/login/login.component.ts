@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;    
-    this.authenticationService.login(this.model.email, this.model.password, this.loading);
+    this.authenticationService.login(this.model.email, this.model.password);
   }
 
 }

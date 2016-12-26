@@ -1,6 +1,6 @@
 <h4>Register a new user.</h4>
 <hr />
-<!--<form novalidate (ngSubmit)="f.form.valid && register()" #f="ngForm" class="form-horizontal" name="form">
+<form novalidate (ngSubmit)="f.form.valid && register()" #f="ngForm" class="form-horizontal" name="form">
   <div [ngClass]="{ 'has-error': f.submitted && !email.valid }" class="form-group row">
     <label for="app-register-email" class="col-md-2 control-label">Email</label>
     <div class="col-md-10">
@@ -12,7 +12,7 @@
   <div [ngClass]="{ 'has-error': f.submitted && !userPhoto.valid }" class="form-group row">
     <label for="app-register-userPhoto" class="col-md-2 control-label">User Photo</label>
     <div class="col-md-10">
-      <input required [(ngModel)]="model.userPhoto" #userPhoto="ngModel" id="app-register-userPhoto" class="form-control" type="url" name="userPhoto" value="">
+      <input [(ngModel)]="model.userPhoto" #userPhoto="ngModel" id="app-register-userPhoto" class="form-control" type="url" name="userPhoto" value="">
     </div>
     <div *ngIf="f.submitted && !userPhoto.valid" class="help-block">User photo is required</div>
   </div>
@@ -24,20 +24,20 @@
     </div>
     <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
   </div>
-  <div [ngClass]="{ 'has-error': f.submitted && !confirmPassword.valid }" class="form-group row">
+  <!--<div [ngClass]="{ 'has-error': f.submitted && !confirmPassword.valid }" class="form-group row">
     <label for="app-register-confirmPassword" class="col-md-2 control-label">Confirm password</label>
     <div class="col-md-10">
       <input required [(ngModel)]="confirmPassword" #confirmPassword="ngModel" id="app-register-confirmPassword" class="form-control" type="password"
         name="confirmPassword" value="">
     </div>
     <div *ngIf="f.submitted && !confirmPassword.valid" class="help-block">Confirm password is required</div>
-  </div>
+  </div>-->
   <div class="form-group row">
     <div class="col-sm-2">&nbsp;</div>
     <div class="col-sm-10">
-    <button [disabled]="loading" class="btn btn-primary">Register</button>
-    <img *ngIf="loading" src="" />
-    <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    <button [disabled]="loading || !f.form.valid" class="btn btn-primary">Register</button>
+    <!--<img *ngIf="loading" src="" />-->
+    <a [routerLink]="['login']" class="btn btn-link">Cancel</a>
     </div>
   </div>
-</form>-->
+</form>
