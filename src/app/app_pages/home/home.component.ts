@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.title = 'Home works !';
+    this.title = 'Top five quests';
 
     this.getAllUsers();
    
