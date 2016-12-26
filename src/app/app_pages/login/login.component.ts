@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { AuthenticationService } from './../app_core/services/authentication.service';
-import { AlertService } from './../app_core/services/alert.service';
+import { AuthenticationService } from './../../app_core/services/authentication.service';
+import { AlertService } from './../../app_core/services/alert.service';
 
-import { UserLoginModel } from './../app_core/models/user-login.model';
+import { UserLoginModel } from './../../app_core/models/user-login.model';
 
 @Component({
   selector: 'app-login',
@@ -27,17 +27,13 @@ export class LoginComponent implements OnInit {
     this.loading = false;
   }
 
-  ngOnInit() {
-    // reset login status
-    this.authenticationService.logout();
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+  ngOnInit() {  
+   
   }
 
   login() {
-    this.loading = true;
-    this.authenticationService.login(this.model.email, this.model.password, this.loading, this.returnUrl);
+    this.loading = true;    
+    this.authenticationService.login(this.model.email, this.model.password, this.loading);
   }
 
 }

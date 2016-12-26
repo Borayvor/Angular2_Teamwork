@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from './../app_core/services/user.service';
+import { UserService } from './../../app_core/services/user.service';
 
-import { UserModel } from './../app_core/models/user.model';
+import { UserModel } from './../../app_core/models/user.model';
 
 @Component({
   selector: 'app-home',

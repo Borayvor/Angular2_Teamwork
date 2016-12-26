@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { UserModel } from './../../app_core/models/user.model';
+import { UserModel } from './../../../app_core/models/user.model';
 
 @Component({
   selector: '[app-user-details]',

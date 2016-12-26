@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 // Pipes
 import { FilterUsersPipe } from './app_core/pipes/filter-users.pipe';
 
+// directives
+import { LoginDirective } from './app_core/directives/login.directive';
+
 //Services
 import { BaseService } from './app_core/services/base.service';
 import { UserService } from './app_core/services/user.service';
@@ -18,19 +21,22 @@ import { AuthenticationService } from './app_core/services/authentication.servic
 
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { UserDetailsComponent } from './home/user-details/user-details.component';
+import { HomeComponent } from './app_pages/home/home.component';
+import { RegisterComponent } from './app_pages/register/register.component';
+import { LoginComponent } from './app_pages/login/login.component';
+import { UserDetailsComponent } from './app_pages/home/user-details/user-details.component';
+import { AboutComponent } from './app_pages/about/about.component';
 
 @NgModule({
   declarations: [
     FilterUsersPipe,
+    LoginDirective,
     AppComponent,
     HomeComponent,    
     RegisterComponent,
     LoginComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AboutComponent    
   ],
   imports: [
     BrowserModule,
