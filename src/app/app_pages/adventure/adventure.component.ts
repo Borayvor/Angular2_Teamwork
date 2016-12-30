@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild  
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AdventureService } from './../../app_core/services/adventure.service';
@@ -8,10 +12,12 @@ import { AdventureModel } from './../../app_core/models/adventure.model';
 import { AdventureDataModel } from './../../app_core/models/adventure-data.model';
 import { UserProfileModel } from './../../app_core/models/user-profile.model';
 
+import { ChangeStateDirective } from './../../app_core/directives/change-state.directive';
+
 @Component({
   selector: 'app-adventure',
   templateUrl: './adventure.component.html',
-  styleUrls: ['./adventure.component.css']
+  styleUrls: ['./adventure.component.css']  
 })
 export class AdventureComponent implements OnInit {
   private errorMessage: string;
@@ -19,13 +25,19 @@ export class AdventureComponent implements OnInit {
   private snapshots: AdventureDataModel[];
   private user: UserProfileModel;
   
+  private maxPositions: number;
+  private currentPosition: number;
+  private isCurrentPos: boolean;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private adventureService: AdventureService,
     private userService: UserService
-  ) {
-    
+  ) {    
+    this.maxPositions = 10;
+    this.currentPosition = 1;
+    this.isCurrentPos = false;
   }
 
   ngOnInit() {
@@ -57,6 +69,14 @@ export class AdventureComponent implements OnInit {
       );
   }
 
-  
+  @ViewChild(ChangeStateDirective)
+  set animationChangeState(v: ChangeStateDirective) {
+
+  }
+
+
+ toggle(){
+    this.isCurrentPos = !this.isCurrentPos;
+ }
 
 }

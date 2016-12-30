@@ -2,3 +2,7 @@
 <h2 class="text-center text-primary">
   {{title}}
 </h2>
+<p pane id="1" *ngIf="shouldShow"></p>
+<p pane id="2" *ngIf="!shouldShow"></p>
+<button (click)="toggle()">Toggle</button>
+<div>Selected: {{selectedPane}}</div>

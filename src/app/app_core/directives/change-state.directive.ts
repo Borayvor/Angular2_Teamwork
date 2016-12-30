@@ -1,17 +1,12 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 @Directive({
   selector: '[animationChangeState]'
 })
 export class ChangeStateDirective {
 
-  constructor(private el: ElementRef) { }
+  constructor() { }
 
-@HostListener('click') onMouseEnter() {
-    this.state();
-  }
+  @Input() snapshotPosition: string;
 
-  private state() {
-    this.el.nativeElement.value = '';
-  }
 }
