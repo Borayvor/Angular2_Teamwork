@@ -1,0 +1,10 @@
+<ng-content></ng-content>
+<h2 >
+  Snapshot
+</h2>
+<div *ngIf="user">
+  <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [author]="user.email"></app-snapshot>
+</div>
+
+
+  <!--<app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot"></app-snapshot>-->

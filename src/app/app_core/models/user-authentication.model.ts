@@ -1,4 +1,4 @@
-export class UserModel {
+export class UserAuthenticationModel {
     objectId: string;
     created: number;
     email: string;

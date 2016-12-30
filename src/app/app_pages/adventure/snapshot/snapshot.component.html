@@ -1,0 +1,21 @@
+<div class="row" [attr.data-snapshot-position]="snapshot.position" *ngIf="isCurrentPosition" [@snapshotState]="state" (click)="toggleState()">
+  <div class="col-xs-6 col-xs-offset-3">
+    <img [src]="snapshot.photo" alt="" class="img-responsive">
+  </div>
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-4">
+        <span>Author: </span><span>{{author}}</span>
+      </div>
+      <div class="col-xs-4">
+        <span>Name: </span><span>{{snapshot.name}}</span>
+      </div>
+      <div class="col-xs-4">
+        <span>Upload date: </span><span>{{snapshot.created | date:"dd/MMM/yyyy"}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    {{snapshot.description}}
+  </div>
+</div>

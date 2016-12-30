@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from './../../app_core/services/user.service';
+import { AdventureService } from './../../app_core/services/adventure.service';
 
-import { UserModel } from './../../app_core/models/user.model';
+import { AdventureHomeModel } from './../../app_core/models/adventure-home.model';
+import { AdventureDataModel } from './../../app_core/models/adventure-data.model';
 
 @Component({
   selector: 'app-home',
@@ -11,28 +12,27 @@ import { UserModel } from './../../app_core/models/user.model';
 })
 export class HomeComponent implements OnInit {
   private title: string;
-  private users: UserModel[];
-  private user: UserModel;
   private errorMessage: string;
+  private adventures: AdventureHomeModel[];
 
-  constructor(private userService: UserService) {
+  constructor(private adventureService: AdventureService) {
   }
 
-  getAllUsers() {
-    this.userService
-      .getAllUsers()
+  ngOnInit() {
+    this.title = 'Adventures';
+
+    this.getAllAdventures();
+  }
+
+  getAllAdventures() {
+    this.adventureService
+      .getAllAdventures()
       .subscribe(
       data => {
-        this.users = data.data;        
+        this.adventures = data.data;
       },
       error => this.errorMessage = <any>error
       );
   }
-  
-  ngOnInit() {
-    this.title = 'Top five quests';
 
-    this.getAllUsers();
-   
-  }
 }

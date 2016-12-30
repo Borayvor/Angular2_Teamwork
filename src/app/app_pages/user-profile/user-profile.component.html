@@ -1,0 +1,12 @@
+<ng-content></ng-content>
+<div *ngIf="user" id="user-profile" class="panel panel-success">
+  <div class="panel-heading">
+    <h1 class="text-center">
+      <strong>Profile of {{user.email}}</strong>
+    </h1>
+  </div>
+  <div class="panel-body">
+    <div app-user-profile-data [userModel]="user" class="row"></div>
+    <div app-user-profile-edit *ngIf="isCurrentUser" class="row"></div>
+  </div>
+</div>

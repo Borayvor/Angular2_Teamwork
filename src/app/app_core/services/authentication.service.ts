@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { BaseService } from './base.service';
 import { AlertService } from './alert.service';
 
-import { UserModel } from './../models/user.model';
+import { UserAuthenticationModel } from './../models/user-authentication.model';
 import { UserLoginModel } from './../models/user-login.model';
 import { UserRegisterModel } from './../models/user-register.model';
 
@@ -16,7 +16,7 @@ export class AuthenticationService {
   private loginUrl: string;
   private logoutUrl: string;
   private baseUrl: string;
-  private currentUser: UserModel;
+  private currentUser: UserAuthenticationModel;
   private loginUser: UserLoginModel;
 
   constructor(
@@ -30,7 +30,7 @@ export class AuthenticationService {
     this.loginUrl = '/users/login';
     this.logoutUrl = '/users/logout';
     this.baseUrl = '';
-    this.currentUser = new UserModel;
+    this.currentUser = new UserAuthenticationModel;
   }
 
   register(user: UserRegisterModel) {
@@ -41,7 +41,7 @@ export class AuthenticationService {
         this.login(user.email, user.password)
       },
       error => {
-        this.alertService.error(error);       
+        this.alertService.error(error);
       });
   }
 

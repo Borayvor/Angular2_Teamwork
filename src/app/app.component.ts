@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from './app_core/services/authentication.service';
 
-import { UserModel } from './app_core/models/user.model';
+import { UserAuthenticationModel } from './app_core/models/user-authentication.model';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +15,13 @@ import { UserModel } from './app_core/models/user.model';
 export class AppComponent implements OnInit, DoCheck {
   private title: string;
   private isAuthenticated: boolean;
-  private user: UserModel;
+  private user: UserAuthenticationModel;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    this.title = 'Quest in ten photos';
+    this.title = 'Adventure in ten photos';
     this.isAuthenticated = false;
   }
 
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, DoCheck {
       this.user = this.authenticationService.getCurrentUser();
       this.isAuthenticated = this.authenticationService.isAuthenticated();
     } else {
-      this.user = new UserModel;
+      this.user = new UserAuthenticationModel;
       this.isAuthenticated = this.authenticationService.isAuthenticated();
     }
 

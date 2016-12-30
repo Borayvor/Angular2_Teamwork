@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './../../app_core/services/authentication.service';
 import { AlertService } from './../../app_core/services/alert.service';
 
-import { UserModel } from './../../app_core/models/user.model';
 import { UserRegisterModel } from './../../app_core/models/user-register.model';
+
 
 @Component({
   selector: 'app-register',
@@ -13,18 +13,18 @@ import { UserRegisterModel } from './../../app_core/models/user-register.model';
 })
 export class RegisterComponent implements OnInit {
   private model: UserRegisterModel;
- 
+
   constructor(
     private authenticationService: AuthenticationService,
     private alertService: AlertService
-    ) { 
-      this.model = new UserRegisterModel;
-    }
+  ) {
+    this.model = new UserRegisterModel;
+  }
 
   ngOnInit() {
   }
 
-  register(){   
+  register() {
     this.authenticationService.register(this.model)
   }
 

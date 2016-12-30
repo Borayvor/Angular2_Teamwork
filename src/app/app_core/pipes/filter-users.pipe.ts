@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { UserModel } from './../models/user.model';
+import { UserProfileModel } from './../models/user-profile.model';
 
 @Pipe({
   name: 'filterUsers'
 })
 export class FilterUsersPipe implements PipeTransform {
 
-  transform(items: UserModel[], filterValue: string = ''): UserModel[] {
+  transform(items: UserProfileModel[], filterValue: string = ''): UserProfileModel[] {
     if (!items) {
       return;
     }

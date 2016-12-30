@@ -1,0 +1,14 @@
+<td>
+  <a href="adventures/{{adventure.objectId}}">
+    <img [src]="adventureTitlePhoto" [alt]="TitlePhoto" class="table-image-size">
+  </a>
+</td>
+<td>
+  <a href="adventures/{{adventure.objectId}}">{{name}}</a>
+</td>
+<td>
+  {{description}}
+</td>
+<td>
+  {{created | date:"dd/MMM/yyyy"}}
+</td>

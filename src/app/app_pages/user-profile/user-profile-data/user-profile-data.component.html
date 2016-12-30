@@ -1,0 +1,51 @@
+<div class="col-sm-3">
+  <div>
+    <img [src]="user.userPhoto" [alt]="UserPhoto" class="img-responsive">
+  </div>
+</div>
+<div class="col-sm-5">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h5>General information</h5>
+    </div>
+    <div class="panel-body">
+      <div>
+        <span>
+           <label>Email:</label>
+        </span>
+        <span>{{user.email}}</span>
+      </div>
+      <div>
+        <span>
+          <label>Created on:</label>
+        </span>
+        <span>{{user.created | date:"dd/MMM/yyyy"}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-sm-4">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h5>Adventures</h5>
+    </div>
+    <div class="panel-body">
+      <div>
+        <span>
+           <label>Count:</label>
+        </span>
+        <span>{{user.adventures.length}}</span>
+      </div>
+      <div>
+        <ul>
+          <li *ngFor="let adventure of user.adventures">
+            <span>
+              <label>Name:</label>
+            </span>
+            <a href="adventures/{{adventure.objectId}}"><span>{{adventure.name}}</span></a>            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
