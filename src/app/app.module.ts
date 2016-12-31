@@ -32,9 +32,10 @@ import { UserProfileComponent } from './app_pages/user-profile/user-profile.comp
 import { UsersComponent } from './app_pages/users/users.component';
 import { AdventureComponent } from './app_pages/adventure/adventure.component';
 import { SnapshotComponent } from './app_pages/adventure/snapshot/snapshot.component';
-import { AdventureHomeDataComponent } from './app_pages/home/adventure-home-data/adventure-home-data.component';
 import { UserProfileDataComponent } from './app_pages/user-profile/user-profile-data/user-profile-data.component';
 import { UserProfileEditComponent } from './app_pages/user-profile/user-profile-edit/user-profile-edit.component';
+import { AdventuresComponent } from './app_pages/adventures/adventures.component';
+import { AdventureDataComponent } from './app_pages/adventures/adventure-data/adventure-data.component';
 
 @NgModule({
   declarations: [
@@ -50,10 +51,11 @@ import { UserProfileEditComponent } from './app_pages/user-profile/user-profile-
     UserProfileComponent,
     UsersComponent,
     AdventureComponent,
-    AdventureHomeDataComponent,
     UserProfileDataComponent,
     UserProfileEditComponent,
-    SnapshotComponent    
+    SnapshotComponent,
+    AdventuresComponent,
+    AdventureDataComponent     
   ],
   imports: [
     BrowserModule,

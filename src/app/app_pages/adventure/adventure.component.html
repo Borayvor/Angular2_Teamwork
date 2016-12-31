@@ -2,10 +2,10 @@
 <h2>
   Snapshot
 </h2>
-<button type="button" (click)="toggle()">Button</button>
+
 <div *ngIf="user">
   
-  <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [isCurrentPosition]="isCurrentPos" [author]="user.email" animationChangeState
+  <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [isShow]="isShowSnapshot" (show)="show($event)" [author]="user.email" animationChangeState
      ></app-snapshot>
 </div>
 <!--<app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot"></app-snapshot>-->

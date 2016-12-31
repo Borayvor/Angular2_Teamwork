@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AdventureService } from './../../app_core/services/adventure.service';
-
-import { AdventureHomeModel } from './../../app_core/models/adventure-home.model';
-import { AdventureDataModel } from './../../app_core/models/adventure-data.model';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,26 +8,13 @@ import { AdventureDataModel } from './../../app_core/models/adventure-data.model
 export class HomeComponent implements OnInit {
   private title: string;
   private errorMessage: string;
-  private adventures: AdventureHomeModel[];
-
-  constructor(private adventureService: AdventureService) {
+  
+  constructor() {
   }
 
   ngOnInit() {
-    this.title = 'Adventures';
-
-    this.getAllAdventures();
+    this.title = 'Home';
   }
-
-  getAllAdventures() {
-    this.adventureService
-      .getAllAdventures()
-      .subscribe(
-      data => {
-        this.adventures = data.data;
-      },
-      error => this.errorMessage = <any>error
-      );
-  }
+  
 
 }

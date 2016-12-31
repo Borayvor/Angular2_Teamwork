@@ -2,22 +2,3 @@
 <h2 class="text-center text-primary">
   {{title}}
 </h2>
-<table class="table table-striped table-condensed table-responsive">
-  <thead>
-    <th>
-      Photo
-    </th>
-    <th>
-      Name
-    </th>
-    <th>
-      Description
-    </th>
-    <th>
-      Created on
-    </th>
-  </thead>
-  <tbody>
-    <tr app-adventure-home-data *ngFor="let adventure of adventures" [adventure]="adventure"></tr>
-  </tbody>
-</table>

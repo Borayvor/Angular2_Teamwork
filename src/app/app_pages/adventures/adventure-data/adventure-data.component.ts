@@ -4,17 +4,17 @@ import { AdventureHomeModel } from './../../../app_core/models/adventure-home.mo
 import { AdventureDataModel } from './../../../app_core/models/adventure-data.model';
 
 @Component({
-  selector: '[app-adventure-home-data]',
-  templateUrl: './adventure-home-data.component.html',
-  styleUrls: ['./adventure-home-data.component.css']
+  selector: '[app-adventure-data]',
+  templateUrl: './adventure-data.component.html',
+  styleUrls: ['./adventure-data.component.css']
 })
-export class AdventureHomeDataComponent implements OnInit, Input {
-  private adventureData: AdventureDataModel; 
+export class AdventureDataComponent implements OnInit, Input {
+ private adventureData: AdventureDataModel; 
 
   constructor() { }
 
   ngOnInit() {
-  }  
+  }
 
   @Input() adventure: AdventureHomeModel;
 

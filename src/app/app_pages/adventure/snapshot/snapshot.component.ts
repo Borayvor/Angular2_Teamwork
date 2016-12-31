@@ -1,8 +1,9 @@
 import {
   Component,
   OnInit,
-  DoCheck,
+  EventEmitter,
   Input,
+  Output,
   trigger,
   state,
   style,
@@ -40,19 +41,22 @@ import { AdventureDataModel } from './../../../app_core/models/adventure-data.mo
     ])
   ]
 })
-export class SnapshotComponent implements OnInit, DoCheck, Input {
+export class SnapshotComponent implements OnInit, Input, Output {
   //private isCurrentPosition: boolean;
   private currentPosition: number;
+  private maxPositions: number;
   private state: string;
 
   constructor() {
     this.state = 'inactive';
     this.currentPosition = 1;
+    this.maxPositions = 10;
     //this.isCurrentPosition = true;
   }
 
   @Input('adventureDataModel') snapshot: AdventureDataModel;
-  @Input() isCurrentPosition: boolean;
+  @Input() isShow: boolean;
+  @Output() show = new EventEmitter<boolean>();
   @Input() author: string;
 
   ngOnInit() {
@@ -63,10 +67,12 @@ export class SnapshotComponent implements OnInit, DoCheck, Input {
 
   }
 
-  toggleState() {
-    // this.currentPosition += this.currentPosition === this.maxPositions ? -(this.maxPositions - 1) : 1;
+  toggleState() {    
+    this.currentPosition += this.currentPosition === this.maxPositions ? -(this.maxPositions - 1) : 1;
     this.state = this.state === 'inactive' ? 'active' : 'inactive';
-    
+    this.isShow = !this.isShow;
+    this.show.emit(this.isShow);
+    this.state = this.state === 'inactive' ? 'active' : 'inactive';
   }
 
 }

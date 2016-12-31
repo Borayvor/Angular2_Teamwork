@@ -1,4 +1,4 @@
-<div class="row" *ngIf="isCurrentPosition" [@snapshotState]="state" (click)="toggleState()">
+<div class="row" *ngIf="isShow && snapshot.position === currentPosition" [@snapshotState]="state" (click)="toggleState()">
   <div class="col-xs-6 col-xs-offset-3">
     <img [src]="snapshot.photo" alt="" class="img-responsive">
   </div>

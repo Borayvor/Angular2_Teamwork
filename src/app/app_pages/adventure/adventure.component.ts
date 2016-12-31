@@ -1,7 +1,6 @@
 import {
   Component,
-  OnInit,
-  ViewChild  
+  OnInit
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -17,34 +16,29 @@ import { ChangeStateDirective } from './../../app_core/directives/change-state.d
 @Component({
   selector: 'app-adventure',
   templateUrl: './adventure.component.html',
-  styleUrls: ['./adventure.component.css']  
+  styleUrls: ['./adventure.component.css']
 })
 export class AdventureComponent implements OnInit {
   private errorMessage: string;
   private adventure: AdventureModel;
   private snapshots: AdventureDataModel[];
   private user: UserProfileModel;
-  
-  private maxPositions: number;
-  private currentPosition: number;
-  private isCurrentPos: boolean;
+  private isShowSnapshot: boolean;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private adventureService: AdventureService,
     private userService: UserService
-  ) {    
-    this.maxPositions = 10;
-    this.currentPosition = 1;
-    this.isCurrentPos = false;
+  ) {
+    this.isShowSnapshot = true;
   }
 
   ngOnInit() {
     let adventureId = this.route.snapshot.params['id'];
     this.getAdventure(adventureId);
   }
-
+  
   getAdventure(adventureId: string) {
     this.adventureService
       .getAdventureById(adventureId)
@@ -67,16 +61,12 @@ export class AdventureComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
       );
+  } 
+
+  show(isShow: boolean) {
+    console.log(this.isShowSnapshot);
+    this.isShowSnapshot = this.isShowSnapshot;
+    console.log(this.isShowSnapshot);
   }
-
-  @ViewChild(ChangeStateDirective)
-  set animationChangeState(v: ChangeStateDirective) {
-
-  }
-
-
- toggle(){
-    this.isCurrentPos = !this.isCurrentPos;
- }
 
 }
