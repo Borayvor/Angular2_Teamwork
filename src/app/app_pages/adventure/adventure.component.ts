@@ -11,8 +11,6 @@ import { AdventureModel } from './../../app_core/models/adventure.model';
 import { AdventureDataModel } from './../../app_core/models/adventure-data.model';
 import { UserProfileModel } from './../../app_core/models/user-profile.model';
 
-import { ChangeStateDirective } from './../../app_core/directives/change-state.directive';
-
 @Component({
   selector: 'app-adventure',
   templateUrl: './adventure.component.html',
@@ -34,7 +32,7 @@ export class AdventureComponent implements OnInit {
     private userService: UserService
   ) {
     this.isShowSnapshot = true;
-     this.currentPosition = 1;
+    this.currentPosition = 1;
     this.maxPositions = 10;
   }
 
@@ -42,7 +40,7 @@ export class AdventureComponent implements OnInit {
     let adventureId = this.route.snapshot.params['id'];
     this.getAdventure(adventureId);
   }
-  
+
   getAdventure(adventureId: string) {
     this.adventureService
       .getAdventureById(adventureId)
@@ -65,9 +63,9 @@ export class AdventureComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
       );
-  } 
+  }
 
-  onShow(isShow: boolean) {    
+  onShow(isShow: boolean) {
     this.currentPosition += this.currentPosition === this.maxPositions ? -(this.maxPositions - 1) : 1;
   }
 

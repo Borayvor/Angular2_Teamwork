@@ -1,9 +1,12 @@
 <ng-content></ng-content>
-<h2>
-  Snapshot
-</h2>
+<div *ngIf="adventure" class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="text-center">
+      {{adventure.name}}
+    </h2>
+  </div>
+</div>
 <div *ngIf="user">
   <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [isShow]="isShowSnapshot" [position]="currentPosition"
-    (show)="onShow($event)" [author]="user.email" animationChangeState></app-snapshot>
+    (show)="onShow($event)" [author]="user.email"></app-snapshot>
 </div>
-<!--<app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot"></app-snapshot>-->

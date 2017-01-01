@@ -1,21 +1,27 @@
-<div class="row" *ngIf="isShow && snapshot.position === position" [@snapshotState]="state" (click)="toggleState()">
-  <div class="col-xs-6 col-xs-offset-3">
-    <img [src]="snapshot.photo" alt="" class="img-responsive">
+<div class="panel panel-success" *ngIf="isShow && snapshot.position === position" [@snapshotState]="state" (click)="toggleShow()">
+  <div class="panel-heading">
+    <h3 class="text-center">
+      {{snapshot.name}}
+    </h3>
   </div>
-  <div class="col-xs-12">
+  <div class="panel-body">
     <div class="row">
-      <div class="col-xs-4">
-        <span>Author: </span><span>{{author}}</span>
+      <div class="col-xs-12 thumbnail">
+        <img [src]="snapshot.photo" alt="snapshot.name" class="img-responsive">
       </div>
-      <div class="col-xs-4">
-        <span>Name: </span><span>{{snapshot.name}}</span>
-      </div>
-      <div class="col-xs-4">
-        <span>Upload date: </span><span>{{snapshot.created | date:"dd/MMM/yyyy"}}</span>
+      <div class="col-xs-12">
+        {{snapshot.description}}
       </div>
     </div>
   </div>
-  <div class="col-xs-12">
-    {{snapshot.description}}
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-sm-6">
+        <span>Author: </span><span>{{author}}</span>
+      </div>
+      <div class="col-sm-6">
+        <span>Upload date: </span><span>{{snapshot.created | date:"dd/MMM/yyyy"}}</span>
+      </div>
+    </div>
   </div>
 </div>

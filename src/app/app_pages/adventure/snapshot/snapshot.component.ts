@@ -26,24 +26,22 @@ import { AdventureDataModel } from './../../../app_core/models/adventure-data.mo
           opacity: 0,
           width: '*',
           height: '*',
-          transform: 'translateX(100%)'
+          transform: 'translateX(0) scale(1)'
         }),
-        animate('1.2s 0.7s ease-in')
+        animate('1s 1s ease-in')
       ]),
       transition('* => void', [
         animate('0.4s ease-out', style({
-          opacity: 0,
-          transform: 'translateX(-100%)'
+          opacity: 0,          
+          transform: 'translateX(0) scale(0)'
         }))
       ])
     ])
   ]
 })
 export class SnapshotComponent implements OnInit, Input, Output {  
-  private state: string;
-
-  constructor() {
-    this.state = 'inactive';
+ 
+  constructor() {  
   }
 
   @Input('adventureDataModel') snapshot: AdventureDataModel;
@@ -56,9 +54,10 @@ export class SnapshotComponent implements OnInit, Input, Output {
   ngOnInit() {    
   }
 
-  toggleState() {
+  toggleShow() {
     this.isShow = !this.isShow;
     this.show.emit(this.isShow);
+    this.isShow = !this.isShow;
   }
 
 }
