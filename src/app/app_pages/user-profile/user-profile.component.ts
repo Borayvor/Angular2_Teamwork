@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserService } from './../../app_core/services/user.service';
+import { AuthenticationService } from './../../app_core/services/authentication.service';
 
 import { UserProfileModel } from './../../app_core/models/user-profile.model';
 
@@ -18,7 +19,8 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     this.isCurrentUser = false;
   }
@@ -34,6 +36,8 @@ export class UserProfileComponent implements OnInit {
       .subscribe(
       data => {
         this.user = data;
+        let currentUser = this.authenticationService.getCurrentUser();
+        this.isCurrentUser = this.user.email === currentUser.email;
       },
       error => this.errorMessage = <any>error
       );

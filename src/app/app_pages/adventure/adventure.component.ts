@@ -24,6 +24,8 @@ export class AdventureComponent implements OnInit {
   private snapshots: AdventureDataModel[];
   private user: UserProfileModel;
   private isShowSnapshot: boolean;
+  private currentPosition: number;
+  private maxPositions: number;
 
   constructor(
     private router: Router,
@@ -32,6 +34,8 @@ export class AdventureComponent implements OnInit {
     private userService: UserService
   ) {
     this.isShowSnapshot = true;
+     this.currentPosition = 1;
+    this.maxPositions = 10;
   }
 
   ngOnInit() {
@@ -63,10 +67,8 @@ export class AdventureComponent implements OnInit {
       );
   } 
 
-  show(isShow: boolean) {
-    console.log(this.isShowSnapshot);
-    this.isShowSnapshot = this.isShowSnapshot;
-    console.log(this.isShowSnapshot);
+  onShow(isShow: boolean) {    
+    this.currentPosition += this.currentPosition === this.maxPositions ? -(this.maxPositions - 1) : 1;
   }
 
 }

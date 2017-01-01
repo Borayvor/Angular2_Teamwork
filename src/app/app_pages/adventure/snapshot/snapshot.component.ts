@@ -20,59 +20,45 @@ import { AdventureDataModel } from './../../../app_core/models/adventure-data.mo
   styleUrls: ['./snapshot.component.css'],
   animations: [
     trigger('snapshotState', [
-      // state('inactive', style({ transform: 'translateX(0) scale(1)' })),
-      // state('active', style({ transform: 'translateX(0) scale(1.1)' })),
-      // transition('inactive => active', animate('100ms ease-in')),
-      // transition('active => inactive', animate('100ms ease-out')),
-      transition('void => inactive', [
-        style({ transform: 'translateX(100%) scale(1)' }),
-        animate(500)
+      state('in', style({ opacity: 1, transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          width: '*',
+          height: '*',
+          transform: 'translateX(100%)'
+        }),
+        animate('1.2s 0.7s ease-in')
       ]),
-      transition('inactive => void', [
-        animate(500, style({ transform: 'translateX(-100%) scale(1)' }))
-      ]),
-      transition('void => active', [
-        style({ transform: 'translateX(0) scale(0)' }),
-        animate(500)
-      ]),
-      transition('active => void', [
-        animate(500, style({ transform: 'translateX(0) scale(0)' }))
+      transition('* => void', [
+        animate('0.4s ease-out', style({
+          opacity: 0,
+          transform: 'translateX(-100%)'
+        }))
       ])
     ])
   ]
 })
-export class SnapshotComponent implements OnInit, Input, Output {
-  //private isCurrentPosition: boolean;
-  private currentPosition: number;
-  private maxPositions: number;
+export class SnapshotComponent implements OnInit, Input, Output {  
   private state: string;
 
   constructor() {
     this.state = 'inactive';
-    this.currentPosition = 1;
-    this.maxPositions = 10;
-    //this.isCurrentPosition = true;
   }
 
   @Input('adventureDataModel') snapshot: AdventureDataModel;
   @Input() isShow: boolean;
-  @Output() show = new EventEmitter<boolean>();
   @Input() author: string;
+  @Input() position: number;
+  @Output() show = new EventEmitter<boolean>();
 
-  ngOnInit() {
-    //this.isCurrentPosition = this.snapshot.position === this.currentPosition;
+
+  ngOnInit() {    
   }
 
-  ngDoCheck() {
-
-  }
-
-  toggleState() {    
-    this.currentPosition += this.currentPosition === this.maxPositions ? -(this.maxPositions - 1) : 1;
-    this.state = this.state === 'inactive' ? 'active' : 'inactive';
+  toggleState() {
     this.isShow = !this.isShow;
     this.show.emit(this.isShow);
-    this.state = this.state === 'inactive' ? 'active' : 'inactive';
   }
 
 }

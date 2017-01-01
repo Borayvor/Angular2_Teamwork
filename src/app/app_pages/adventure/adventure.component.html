@@ -2,10 +2,8 @@
 <h2>
   Snapshot
 </h2>
-
 <div *ngIf="user">
-  
-  <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [isShow]="isShowSnapshot" (show)="show($event)" [author]="user.email" animationChangeState
-     ></app-snapshot>
+  <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [isShow]="isShowSnapshot" [position]="currentPosition"
+    (show)="onShow($event)" [author]="user.email" animationChangeState></app-snapshot>
 </div>
 <!--<app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot"></app-snapshot>-->
