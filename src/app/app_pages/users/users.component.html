@@ -2,6 +2,29 @@
 <h2 class="text-center text-primary">
   {{title}}
 </h2>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <form class="navbar-form navbar-right">
+      <div class="input-group">
+        <label class="input-group-addon" for="users-search">Search: </label>
+        <input type="text" id="users-search" class="form-control" placeholder="Search..." (input)="onInput($event)" />
+      </div>
+      <div class="form-group">
+        <label for="users-sort">Sort:</label>
+        <select class="form-control" id="users-sort" (change)="onSortChange($event)">
+            <option *ngFor="let prop of sortingProperties" [selected]="sortBy === prop" value="{{prop}}">{{prop}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="users-order">Order:</label>
+        <select class="form-control" id="users-order" (change)="onOrderChange($event)">
+            <option [selected]="orderDesc === desc" value="desc">Descending</option>
+            <option [selected]="orderDesc === asc" value="asc">Ascending</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</nav>
 <table class="table table-striped table-condensed table-responsive">
   <thead>
     <th>
@@ -9,9 +32,33 @@
     </th>
     <th>
       Email
-    </th>    
+    </th>
+    <th>
+      Created on
+    </th>
   </thead>
   <tbody>
-    <tr app-user-details *ngFor="let user of users" [user]="user"></tr>
+    <tr app-user-details *ngFor="let user of (pagedUsers | filterUsers:filterText | sortedUser:[sortBy, orderDesc])" [user]="user"></tr>
   </tbody>
 </table>
+<div class="text-center">
+  <nav>
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(1)">First</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.currentPage + 1)">Next</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.totalPages)">Last</a>
+      </li>
+    </ul>
+  </nav>
+</div>

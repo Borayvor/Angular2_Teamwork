@@ -9,3 +9,12 @@
 .table-image-size {
   width: 200px;
 }
+
+.panel-body{
+    background-color: #F5F5F5;
+}
+
+.panel-footer {
+  color: #3C763D;
+}
+

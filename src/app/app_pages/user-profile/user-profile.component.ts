@@ -36,7 +36,7 @@ export class UserProfileComponent implements OnInit {
       .subscribe(
       data => {
         this.user = data;
-        let currentUser = this.authenticationService.getCurrentUser();
+        let currentUser: UserProfileModel = this.authenticationService.getCurrentUser();
         this.isCurrentUser = this.user.email === currentUser.email;
       },
       error => this.errorMessage = <any>error

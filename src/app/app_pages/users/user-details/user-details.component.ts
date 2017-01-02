@@ -23,5 +23,9 @@ export class UserDetailsComponent implements OnInit, Input {
   get userPhoto(): string {    
     return this.user.userPhoto;
   }
+
+  get userCreated():any{
+    return this.user.created;
+  }
  
 }

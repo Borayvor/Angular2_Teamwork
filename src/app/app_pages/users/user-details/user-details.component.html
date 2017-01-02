@@ -1,10 +1,14 @@
 <td>
-  <a href="users/{{user.objectId}}">
-    <img [src]="userPhoto" [alt]="UserPhoto" class="table-image-size">
-  </a>
+    <a href="users/{{user.objectId}}">
+        <img [src]="userPhoto" [alt]="UserPhoto" class="table-image-size thumbnail">
+    </a>
 </td>
 <td>
-  <a href="users/{{user.objectId}}">
+    <a href="users/{{user.objectId}}">
     {{email}}
   </a>
-</td>
+    <td>
+        <a href="users/{{user.objectId}}">
+    {{userCreated | date:"dd/MMM/yyyy"}}
+  </a>
+    </td>

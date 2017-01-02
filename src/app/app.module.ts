@@ -8,10 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Pipes
 import { FilterUsersPipe } from './app_core/pipes/filter-users.pipe';
+import { SortedUserPipe } from './app_core/pipes/sorted-user.pipe';
 
 // directives
+import { LoginDirective } from './app_core/directives/login.directive';
 import { ChangeStateDirective } from './app_core/directives/change-state.directive';
-import { Pane } from './app_core/directives/pane.directive';
 
 //Services
 import { BaseService } from './app_core/services/base.service';
@@ -20,6 +21,8 @@ import { AlertService } from './app_core/services/alert.service';
 import { AuthGuardService } from './app_core/services/auth-guard.service';
 import { AuthenticationService } from './app_core/services/authentication.service';
 import { AdventureService } from './app_core/services/adventure.service';
+import { UploadPhotoService } from './app_core/services/upload-photo.service';
+import { PagerService } from './app_core/services/pager.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -36,12 +39,17 @@ import { UserProfileDataComponent } from './app_pages/user-profile/user-profile-
 import { UserProfileEditComponent } from './app_pages/user-profile/user-profile-edit/user-profile-edit.component';
 import { AdventuresComponent } from './app_pages/adventures/adventures.component';
 import { AdventureDataComponent } from './app_pages/adventures/adventure-data/adventure-data.component';
+import { AdventureCreateComponent } from './app_pages/adventure-create/adventure-create.component';
+import { SortedAdventurePipe } from './app_core/pipes/sorted-adventure.pipe';
+import { FillterAdventuresPipe } from './app_core/pipes/fillter-adventures.pipe';
+import { NotFoundComponent } from './app_pages/not-found/not-found.component';
+import { AddSnapshotsComponent } from './app_pages/adventure/add-snapshots/add-snapshots.component';
 
 @NgModule({
-  declarations: [
+  declarations: [    
     FilterUsersPipe,
+    LoginDirective,
     ChangeStateDirective,
-    Pane,
     AppComponent,
     HomeComponent,    
     RegisterComponent,
@@ -55,7 +63,13 @@ import { AdventureDataComponent } from './app_pages/adventures/adventure-data/ad
     UserProfileEditComponent,
     SnapshotComponent,
     AdventuresComponent,
-    AdventureDataComponent     
+    AdventureDataComponent,
+    AdventureCreateComponent,
+    SortedUserPipe,
+    SortedAdventurePipe,
+    FillterAdventuresPipe,
+    NotFoundComponent,
+    AddSnapshotsComponent    
   ],
   imports: [
     BrowserModule,
@@ -69,7 +83,9 @@ import { AdventureDataComponent } from './app_pages/adventures/adventure-data/ad
     AlertService,
     AuthGuardService,
     AuthenticationService,
-    AdventureService
+    AdventureService,
+    UploadPhotoService,
+    PagerService
   ],
   bootstrap: [AppComponent]
 })

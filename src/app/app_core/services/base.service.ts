@@ -14,11 +14,8 @@ export class BaseService {
   private headersPost: Headers;
   private optionsGet: RequestOptions;
   private optionsPost: RequestOptions;
-  // private currentUserToken: string;
-
-  constructor(private http: Http) {
-    //this.currentUserToken = localStorage.getItem('currentUser') !== null ? localStorage.getItem('currentUser')['token'] : 'token';
-
+ 
+  constructor(private http: Http) {   
     this.headersGet = new Headers({
       'application-id': this.applicationId,
       'secret-key': this.secretKey,

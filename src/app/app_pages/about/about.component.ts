@@ -1,6 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { Pane } from './../../app_core/directives/pane.directive';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -8,20 +6,20 @@ import { Pane } from './../../app_core/directives/pane.directive';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  private title: string;
+  private titles: string[];
+  private address: string;
+  private time: number;
+  private contactEmail: string;
+  private tel: number;
 
   constructor() { }
 
   ngOnInit() {
-    this.title = 'About';
+    this.titles = ['About', 'Address', 'Hours of operation', 'Contact info'];
+    this.address = 'бул. "Александър Малинов“ 31,1729 София';
+    this.time = 8;
+    this.contactEmail = 'academy@telerik.com';
+    this.tel = 888888888;
   }
-
-  @ViewChild(Pane)
-  set pane(v: Pane) {
-    setTimeout(() => { this.selectedPane = v.id; }, 0);
-  }
-  selectedPane: string = '';
-  shouldShow = true;
-  toggle() { this.shouldShow = !this.shouldShow; }
 
 }

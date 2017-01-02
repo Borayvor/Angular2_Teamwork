@@ -1,12 +1,12 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[animationChangeState]'
 })
 export class ChangeStateDirective {
 
-  constructor() { }
+  constructor(private el: ElementRef) { }
 
-  @Input() snapshotPosition: string;
+  @Input() id: number;
 
 }

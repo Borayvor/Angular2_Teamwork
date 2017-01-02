@@ -21,8 +21,7 @@
   <div class="form-group row">
     <div class="col-sm-2">&nbsp;</div>
     <div class="col-sm-10">
-      <button [disabled]="loading || !f.form.valid" class="btn btn-primary">Login</button>
-      <img *ngIf="loading" src="" />
+      <button class="btn btn-primary">Login</button>
       <a [routerLink]="['/register']" class="btn btn-link">Register</a>
     </div>
   </div>

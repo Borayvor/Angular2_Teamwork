@@ -1,8 +1,26 @@
 <ng-content></ng-content>
 <h2 class="text-center text-primary">
-  {{title}}
+    {{titles[0]}}
 </h2>
-<p pane id="1" *ngIf="shouldShow"></p>
-<p pane id="2" *ngIf="!shouldShow"></p>
-<button (click)="toggle()">Toggle</button>
-<div>Selected: {{selectedPane}}</div>
+<div class="panel panel-success">
+    <div class="panel-body">
+        <div class="col-xs-12 col-sm-4">
+            <div>
+                <h3 class="text-primary">{{titles[1]}}</h3>
+                <p>{{address}}</p>
+            </div>
+            <div>
+                <h3 class="text-primary">{{titles[2]}}</h3>
+                <p>Mon - Fri: {{time}} - {{time + 10}}<br/>Sat - Sun: {{time + 2}} - {{time + 6}}</p>
+            </div>
+            <div>
+                <h3 class="text-primary">{{titles[3]}}</h3>
+                <p>Email: {{contactEmail}} <br/>Tel: {{tel}}</p>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 panel-heading">
+            <div id="map"><iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%8A%D1%80%20%D0%9C%D0%B0%D0%BB%D0%B8%D0%BD%D0%BE%D0%B2%2031%2C%20%D0%A1%D0%BE%D1%84%D0%B8%D1%8F%2C%20%D0%91%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D0%B8%D1%8F&key=AIzaSyBrvJTJ9xni-qrOWLleJ3Ox3ST2QnX5pT0"
+                    allowfullscreen></iframe></div>
+        </div>
+    </div>
+</div>
