@@ -1,43 +1,41 @@
 <div class="panel panel-default">
-    <form novalidate (ngSubmit)="f.form.valid && addAdventureImage()" #f="ngForm" class="form-horizontal">
-        <div>
-            <div [ngClass]="{ 'has-error': f.submitted && !name.valid }" class="form-group row">
-                <label for="app-create-adventure-name" class="col-sm-2 control-label">Text image</label>
-                <div class="col-sm-10">
-                    <input required [(ngModel)]="model.name" #name="ngModel" id="app-create-adventure-name" class="form-control" type="email" name="name" value="">
-                    <div *ngIf="f.submitted && !name.valid" class="help-block">Text image is required</div>
-                </div>
-            </div>
-            <div [ngClass]="{ 'has-error': f.submitted && !photo.valid }" class="form-group row">
-                <label for="app-create-adventure-titlePhoto" class="col-sm-2 control-label">Title photo</label>
-                <div class="col-sm-7">
-                    <input [(ngModel)]="model.photo" #photo="ngModel" id="app-create-adventure-titlePhoto" class="form-control" type="url" name="titlePhoto" value="">
-                    <div *ngIf="f.submitted && !photo.valid" class="help-block">Title photo is required</div>
-                </div>
-                <div class="col-sm-3">
-                    <img [src]="model.photo" alt="TitlePhoto" class="img-responsive thumbnail">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-2">&nbsp;</div>
-                <div class="col-sm-10">
-                    <button class="btn btn-primary">Create</button>
-                </div>
-            </div>
-        </div>
-
-        <!--<div class="panel-heading">Image in the adventure: {{count}}</div>
-        <label for="add-snapshot-text" class="col-sm-2 control-label">Header image</label>
-        <div class="panel-heading">
-            <input type="text" id="add-snapshot-text" class="form-control" placeholder="add text">
+  <div class="panel-body">
+    <form novalidate (ngSubmit)="f.form.valid && addAdventurePhoto()" #f="ngForm" class="form-horizontal">
+      <div>
+        <div [ngClass]="{ 'has-error': f.submitted && !name.valid }" class="form-group row">
+          <label for="app-create-adventure-name" class="col-sm-2 control-label">Name</label>
+          <div class="col-sm-10">
+            <input required [(ngModel)]="model.name" #name="ngModel" id="app-create-adventure-name" class="form-control" type="text"
+              name="name" value="">
             <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
+          </div>
         </div>
-        <label for="add-snapshot-image" class="col-sm-2 control-label">Image</label>
-        <div class="panel-heading">
-            <input type="url" id="add-snapshot-image" class="form-control" placeholder="url for photo">
+        <div [ngClass]="{ 'has-error': f.submitted && !description.valid }" class="form-group row">
+          <label for="app-create-adventure-description" class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="model.description" #description="ngModel" id="app-create-adventure-description" class="form-control"
+              name="description" rows="3" cols="6"></textarea>
+            <div *ngIf="f.submitted && !description.valid" class="help-block">Description is required</div>
+          </div>
         </div>
-        <div>
-            <input type="button" class="btn btn-success form-control" value="Add adventure image">
-        </div>-->
+        <div [ngClass]="{ 'has-error': f.submitted && !photo.valid }" class="form-group row">
+          <label for="app-create-adventure-photo" class="col-sm-2 control-label">Photo</label>
+          <div class="col-sm-7">
+            <input required [(ngModel)]="model.photo" #photo="ngModel" id="app-create-adventure-photo" class="form-control" type="url"
+              name="photo" value="">
+            <div *ngIf="f.submitted && !photo.valid" class="help-block">Photo is required</div>
+          </div>
+          <div class="col-sm-3">
+            <img [src]="model.photo" alt="Photo" class="img-responsive thumbnail">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-2">&nbsp;</div>
+          <div class="col-sm-10">
+            <button class="btn btn-primary">Create</button>
+          </div>
+        </div>
+      </div>
     </form>
+  </div>
 </div>
