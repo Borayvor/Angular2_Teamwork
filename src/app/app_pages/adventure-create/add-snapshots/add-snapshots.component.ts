@@ -13,29 +13,31 @@ import { UserProfileModel } from './../../../app_core/models/user-profile.model'
   styleUrls: ['./add-snapshots.component.css']
 })
 export class AddSnapshotsComponent implements OnInit, Input {
-  private count: number;
-  private model: AdventureDataCreateModel;
-  private currentUser: UserProfileModel;
+  private adventureDataModels: AdventureDataCreateModel[];
+  private adventureDataModel: AdventureDataCreateModel;
 
   constructor(
     private adventureService: AdventureService,
     private alertService: AlertService,
     private authenticationService: AuthenticationService
   ) {
-    this.count = 1
-    this.model = new AdventureDataCreateModel;
+    this.adventureDataModels = [];
+    this.adventureDataModel = new AdventureDataCreateModel;
+    this.adventureDataModel['___class'] = 'Adventure_Data';
+    
+    for(var i = 0; i < 10; i += 1) {
+      this.adventureDataModels.push(this.adventureDataModel);
+    }
   }
 
-  @Input() adventureId: string;
+  @Input() f: any;
+  @Input() index: number;
+  @Input() snapshot: AdventureDataCreateModel;
 
   ngOnInit() {
     
   }
 
-  addAdventurePhoto() {
-    this.currentUser = this.authenticationService.getCurrentUser();
-    this.model.ownerId = this.currentUser.objectId;
-    this.adventureService.addSnapshotToAdventure(this.adventureId, this.model);
-  }
+
 
 }

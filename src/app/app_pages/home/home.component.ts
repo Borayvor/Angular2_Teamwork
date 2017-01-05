@@ -16,25 +16,27 @@ export class HomeComponent implements OnInit {
   private errorMessage: string;
   private adventure: AdventureHomeModel;
   private user: UserProfileModel;
-  
+
   constructor(
     private adventureService: AdventureService,
     private userService: UserService
-    ) {}
+  ) { }
 
   ngOnInit() {
     this.title = 'Home';
 
     this.getLastAdventure();
   }
-  
-getLastAdventure() {
+
+  getLastAdventure() {
     this.adventureService
       .getAllAdventures()
       .subscribe(
       data => {
-        let adventures: AdventureHomeModel[] = data.data;
-        this.adventure = adventures.sort(this.sortCreatedDesc).pop();
+        let adventures: AdventureHomeModel[] = data.data;        
+        adventures.sort(this.sortCreatedAsc);        
+        this.adventure = adventures.pop();
+        console.log(this.adventure);
         this.getUser(this.adventure.ownerId);
       },
       error => this.errorMessage = <any>error
@@ -52,7 +54,7 @@ getLastAdventure() {
       );
   }
 
-  private sortCreatedDesc(a: AdventureHomeModel, b: AdventureHomeModel) { 
-    return +b.created - +a.created;
-}
+  private sortCreatedAsc(a: AdventureHomeModel, b: AdventureHomeModel) {
+    return +a.created - +b.created;
+  }
 }

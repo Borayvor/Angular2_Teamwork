@@ -6,9 +6,6 @@
     </h2>
   </div>
 </div>
-<div *ngIf="user && adventure && currentUser.objectId === user.objectId">
-  <app-add-snapshots [adventureId]="adventure.objectId"></app-add-snapshots>
-</div>
 <div *ngIf="user">
   <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [isShow]="isShowSnapshot" [position]="currentPosition"
     (show)="onShow($event)" [author]="user.email"></app-snapshot>

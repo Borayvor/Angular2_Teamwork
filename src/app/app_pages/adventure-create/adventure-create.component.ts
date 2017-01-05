@@ -7,6 +7,7 @@ import { UploadPhotoService } from './../../app_core/services/upload-photo.servi
 import { AlertService } from './../../app_core/services/alert.service';
 
 import { AdventureCreateModel } from './../../app_core/models/adventure-create.model';
+import { AdventureDataCreateModel } from './../../app_core/models/adventure-data-create.model';
 import { AdventureModel } from './../../app_core/models/adventure.model';
 import { UserProfileModel } from './../../app_core/models/user-profile.model';
 
@@ -19,7 +20,7 @@ import { UserProfileModel } from './../../app_core/models/user-profile.model';
 export class AdventureCreateComponent implements OnInit {
   private title: string;
   private currentUser: UserProfileModel;
-  private model: AdventureCreateModel;
+  private adventureModel: AdventureCreateModel;  
   private adventure: AdventureModel;
 
   constructor(
@@ -30,7 +31,9 @@ export class AdventureCreateComponent implements OnInit {
     private router: Router,
     private alertService: AlertService
   ) {
-    this.model = new AdventureCreateModel;
+    this.adventureModel = new AdventureCreateModel;
+    this.adventureModel.data = new Array<AdventureDataCreateModel>(10);
+    
   }
 
   ngOnInit() {
@@ -39,8 +42,13 @@ export class AdventureCreateComponent implements OnInit {
 
   createAdventure() {
     this.currentUser = this.authenticationService.getCurrentUser();
-    this.model.ownerId = this.currentUser.objectId;
-    this.adventureService.createAdventure(this.model)
+    this.adventureModel.ownerId = this.currentUser.objectId;
+
+    // this.adventureDataModel.ownerId = this.currentUser.objectId;
+    // this.adventureDataModel.position = 1; 
+    // this.adventureModel.data.push(this.adventureDataModel);
+
+    this.adventureService.createAdventure(this.adventureModel)
       .subscribe(data => {
         this.adventure = data;
         this.router.navigate(['adventures/' + this.adventure.objectId]);

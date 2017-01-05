@@ -5,6 +5,7 @@ import { BaseService } from './base.service';
 
 import { AdventureCreateModel } from './../models/adventure-create.model';
 import { AdventureDataCreateModel } from './../models/adventure-data-create.model';
+import { AdventureDataModel } from './../models/adventure-data.model';
 
 @Injectable()
 export class AdventureService {
@@ -13,30 +14,47 @@ export class AdventureService {
   private adventureDataUrl: string;
   private adventure: AdventureCreateModel;
 
-  constructor(private data: BaseService) {
+  constructor(private baseService: BaseService) {
     this.adveturesUrl = '/data/Adventures';
     this.adventureDataUrl = '/data/Adventure_Data';
   }
 
   getAllAdventures(): Observable<any> {
-    return this.data.get(this.adveturesUrl);
+    return this.baseService.get(this.adveturesUrl);
   }
 
   getAdventureById(id: string): Observable<any> {
-    return this.data.get(this.adveturesUrl + '/' + id);
+    return this.baseService.get(this.adveturesUrl + '/' + id);
   }
 
   createAdventure(adventure: AdventureCreateModel): Observable<any> {
-    return this.data.post(this.adveturesUrl, adventure);
+    return this.baseService.post(this.adveturesUrl, adventure);
   }
 
   addSnapshotToAdventure(currentAdventureId: string, snapshot: AdventureDataCreateModel) {
-    this.getAdventureById(currentAdventureId).subscribe(data => {
-      this.adventure = data;
-      this.adventure.data.push(snapshot);
-      this.data.put(this.adveturesUrl, this.adventure);
-    },
-      error => this.errorMessage = <any>error);
-  }
+    let data: any[];
+    let position: number;
+    let snapshotCreated: AdventureDataModel;
 
+    this.baseService.post(this.adventureDataUrl, snapshot).subscribe(
+      snapshotData => {
+        snapshotCreated = snapshotData;
+
+        this.baseService.put(this.adveturesUrl + '/' + currentAdventureId, JSON.stringify({
+          data: {
+            "___class": "Adventure_Data",
+            "objectId": snapshotCreated.objectId
+          }
+      })).subscribe(
+          obj => {
+            let newObj: any = obj;
+            console.log(newObj);
+          },
+          error => this.errorMessage = <any>error
+          );
+      },
+      error => this.errorMessage = <any>error
+    );
+
+  }
 }

@@ -28,8 +28,8 @@ export class AdventuresComponent implements OnInit {
 
   ngOnInit() {
     this.title = 'Adventures';
-    this.sortingProperties = ['Name', 'Description', 'Created'];
-    this.sortBy = 'Name';
+    this.sortingProperties = [ 'Created', 'Name', 'Description' ];
+    this.sortBy = 'Created';
     this.orderDesc = 'desc';
     this.getAllAdventures();
   }

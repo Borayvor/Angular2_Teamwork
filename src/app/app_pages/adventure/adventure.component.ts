@@ -22,7 +22,6 @@ export class AdventureComponent implements OnInit {
   private adventure: AdventureModel;
   private snapshots: AdventureDataModel[];
   private user: UserProfileModel;
-  private currentUser: UserProfileModel;
   private isShowSnapshot: boolean;
   private currentPosition: number;
   private maxPositions: number;
@@ -41,7 +40,6 @@ export class AdventureComponent implements OnInit {
 
   ngOnInit() {    
     let adventureId = this.route.snapshot.params['id'];
-    this.currentUser = this.authenticationService.getCurrentUser();
     this.getAdventure(adventureId);
   }
 
