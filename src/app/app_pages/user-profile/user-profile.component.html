@@ -5,8 +5,8 @@
       <strong>Profile of {{user.email}}</strong>
     </h1>
   </div>
-  <div class="panel-body">
-    <div app-user-profile-data [userModel]="user" class="row"></div>
+  <div class="panel-body" *ngIf="user">
+    <div app-user-profile-data [user]="user" [userAdventures]="adventures" [adventuresCount]="adventuresCount" class="row"></div>
     <div app-user-profile-edit *ngIf="isCurrentUser" class="row"></div>
   </div>
 </div>

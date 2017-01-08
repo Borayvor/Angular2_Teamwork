@@ -5,5 +5,5 @@ export class UserProfileModel {
     created: number;
     email: string;
     userPhoto: string; 
-    adventures: AdventureModel;
+    adventures: AdventureModel[];
 }

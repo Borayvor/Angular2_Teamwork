@@ -29,16 +29,16 @@
     <div class="panel-heading">
       <h5>Adventures</h5>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" *ngIf="userAdventures">
       <div>
         <span>
            <label>Count:</label>
         </span>
-        <span>{{user.adventures.length}}</span>
+        <span>{{adventuresCount}}</span>
       </div>
       <div>
         <ul>
-          <li *ngFor="let adventure of user.adventures">
+          <li *ngFor="let adventure of userAdventures">
             <span>
               <label>Name:</label>
             </span>

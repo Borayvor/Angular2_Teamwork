@@ -23,6 +23,10 @@ export class AdventureService {
     return this.baseService.get(this.adveturesUrl);
   }
 
+  getAllAdventuresByAuthorId(authorId: string) {
+    return this.baseService.get(this.adveturesUrl + '?where=ownerId%20in%20(%27' + authorId + '%27)');
+  }
+
   getAdventureById(id: string): Observable<any> {
     return this.baseService.get(this.adveturesUrl + '/' + id);
   }
@@ -31,30 +35,4 @@ export class AdventureService {
     return this.baseService.post(this.adveturesUrl, adventure);
   }
 
-  addSnapshotToAdventure(currentAdventureId: string, snapshot: AdventureDataCreateModel) {
-    let data: any[];
-    let position: number;
-    let snapshotCreated: AdventureDataModel;
-
-    this.baseService.post(this.adventureDataUrl, snapshot).subscribe(
-      snapshotData => {
-        snapshotCreated = snapshotData;
-
-        this.baseService.put(this.adveturesUrl + '/' + currentAdventureId, JSON.stringify({
-          data: {
-            "___class": "Adventure_Data",
-            "objectId": snapshotCreated.objectId
-          }
-      })).subscribe(
-          obj => {
-            let newObj: any = obj;
-            console.log(newObj);
-          },
-          error => this.errorMessage = <any>error
-          );
-      },
-      error => this.errorMessage = <any>error
-    );
-
-  }
 }

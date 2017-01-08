@@ -1,29 +1,29 @@
-<div class="snapshot" *ngIf="adventureDataModels && index">
+<div class="snapshot" *ngIf="snapshot">
   <div [ngClass]="{ 'has-error': f.submitted && !name.valid }" class="form-group row">
-    <label for="app-create-adventure-name" class="col-sm-2 control-label">Name</label>
+    <label for="app-create-adventure-name" class="col-sm-2 control-label">Name_{{index}}</label>
     <div class="col-sm-10">
-      <input required [(ngModel)]="adventureDataModels[index].name" #name="ngModel" id="app-create-adventure-name" class="form-control"
-        type="text" name="name" value="">
-        <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
+      <input required [(ngModel)]="snapshot.name" #name="ngModel" id="app-create-adventure-name" class="form-control"
+        type="text" name="name{{index}}" value="">
+        <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>        
     </div>
   </div>
   <div [ngClass]="{ 'has-error': f.submitted && !description.valid }" class="form-group row">
     <label for="app-create-adventure-description" class="col-sm-2 control-label">Description</label>
     <div class="col-sm-10">
-      <textarea [(ngModel)]="adventureDataModels[index].description" #description="ngModel" id="app-create-adventure-description" class="form-control"
-        name="description" rows="3" cols="6"></textarea>
+      <textarea [(ngModel)]="snapshot.description" #description="ngModel" id="app-create-adventure-description" class="form-control"
+        name="description{{index}}" rows="3" cols="6"></textarea>
         <div *ngIf="f.submitted && !description.valid" class="help-block">Description is required</div>
     </div>
   </div>
   <div [ngClass]="{ 'has-error': f.submitted && !photo.valid }" class="form-group row">
     <label for="app-create-adventure-photo" class="col-sm-2 control-label">Photo</label>
     <div class="col-sm-7">
-      <input required [(ngModel)]="adventureDataModels[index].photo" #photo="ngModel" id="app-create-adventure-photo" class="form-control"
-        type="url" name="photo" value="">
+      <input required [(ngModel)]="snapshot.photo" #photo="ngModel" id="app-create-adventure-photo" class="form-control"
+        type="url" name="photo{{index}}" value="">
         <div *ngIf="f.submitted && !photo.valid" class="help-block">Photo is required</div>
     </div>
     <div class="col-sm-3">
-      <img [src]="adventureDataModels[index].photo" alt="Photo" class="img-responsive thumbnail">
+      <img [src]="snapshot.photo" alt="Photo" class="img-responsive thumbnail">
     </div>
   </div>
 </div>

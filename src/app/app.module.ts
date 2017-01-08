@@ -40,10 +40,10 @@ import { UserProfileEditComponent } from './app_pages/user-profile/user-profile-
 import { AdventuresComponent } from './app_pages/adventures/adventures.component';
 import { AdventureDataComponent } from './app_pages/adventures/adventure-data/adventure-data.component';
 import { AdventureCreateComponent } from './app_pages/adventure-create/adventure-create.component';
+import { AddSnapshotsComponent } from './app_pages/adventure-create/add-snapshots/add-snapshots.component';
 import { SortedAdventurePipe } from './app_core/pipes/sorted-adventure.pipe';
 import { FillterAdventuresPipe } from './app_core/pipes/fillter-adventures.pipe';
 import { NotFoundComponent } from './app_pages/not-found/not-found.component';
-import { AddSnapshotsComponent } from './app_pages/adventure-create/add-snapshots/add-snapshots.component';
 
 @NgModule({
   declarations: [    
@@ -69,13 +69,13 @@ import { AddSnapshotsComponent } from './app_pages/adventure-create/add-snapshot
     SortedAdventurePipe,
     FillterAdventuresPipe,
     NotFoundComponent,
-    AddSnapshotsComponent    
+    AddSnapshotsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     BaseService,
@@ -85,7 +85,7 @@ import { AddSnapshotsComponent } from './app_pages/adventure-create/add-snapshot
     AuthenticationService,
     AdventureService,
     UploadPhotoService,
-    PagerService
+    PagerService,
   ],
   bootstrap: [AppComponent]
 })
