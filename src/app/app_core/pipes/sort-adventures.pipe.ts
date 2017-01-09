@@ -1,19 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { AdventureDataModel } from './../models/adventure-data.model';
+import { AdventureHomeModel } from './../models/adventure-home.model';
 
 
 @Pipe({
-  name: 'sortedAdventure'
+  name: 'sortAdventures'
 })
-export class SortedAdventurePipe implements PipeTransform {
+export class SortAdventuresPipe implements PipeTransform {
 
-  transform(adventure: AdventureDataModel[], parameters: any[]): AdventureDataModel[] {
-    if (!adventure) {
+  transform(adventures: AdventureHomeModel[], parameters: any[]): AdventureHomeModel[] {
+    if (!adventures) {
             return [];
         }
 
-        return adventure.sort((a, b) => {
+        return adventures.sort((a, b) => {
             switch (parameters[0]) {
                 case 'Name':
                     return parameters[1] === 'asc' ?

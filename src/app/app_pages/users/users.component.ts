@@ -28,8 +28,8 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.title = 'Users';
-    this.sortingProperties = ['Email', 'Created'];
-    this.sortBy = 'Email';
+    this.sortingProperties = ['Created', 'Email'];
+    this.sortBy = 'Created';
     this.orderDesc = 'desc';
     this.getAllUsers();
   }

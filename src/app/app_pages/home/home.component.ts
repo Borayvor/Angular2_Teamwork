@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
         let adventures: AdventureHomeModel[] = data.data;        
         adventures.sort(this.sortCreatedAsc);        
         this.adventure = adventures.pop();
-        console.log(this.adventure);
         this.getUser(this.adventure.ownerId);
       },
       error => this.errorMessage = <any>error

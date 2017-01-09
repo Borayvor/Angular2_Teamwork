@@ -41,7 +41,7 @@ import { AdventuresComponent } from './app_pages/adventures/adventures.component
 import { AdventureDataComponent } from './app_pages/adventures/adventure-data/adventure-data.component';
 import { AdventureCreateComponent } from './app_pages/adventure-create/adventure-create.component';
 import { AddSnapshotsComponent } from './app_pages/adventure-create/add-snapshots/add-snapshots.component';
-import { SortedAdventurePipe } from './app_core/pipes/sorted-adventure.pipe';
+import { SortAdventuresPipe } from './app_core/pipes/sort-adventures.pipe';
 import { FillterAdventuresPipe } from './app_core/pipes/fillter-adventures.pipe';
 import { NotFoundComponent } from './app_pages/not-found/not-found.component';
 
@@ -66,7 +66,7 @@ import { NotFoundComponent } from './app_pages/not-found/not-found.component';
     AdventureDataComponent,
     AdventureCreateComponent,
     SortedUserPipe,
-    SortedAdventurePipe,
+    SortAdventuresPipe,
     FillterAdventuresPipe,
     NotFoundComponent,
     AddSnapshotsComponent,
