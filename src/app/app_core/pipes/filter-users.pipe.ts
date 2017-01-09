@@ -7,16 +7,16 @@ import { UserProfileModel } from './../models/user-profile.model';
 })
 export class FilterUsersPipe implements PipeTransform {
 
-  transform(items: UserProfileModel[], filterValue: string = ''): UserProfileModel[] {
-    if (!items) {
+  transform(users: UserProfileModel[], filterValue: string = ''): UserProfileModel[] {
+    if (!users) {
       return;
     }
 
     if (filterValue === '') {
-      return items;
+      return users;
     }
 
-    return items.filter(item =>
+    return users.filter(item =>
       item.email.toLocaleLowerCase()
         .indexOf(filterValue) > -1);
   }

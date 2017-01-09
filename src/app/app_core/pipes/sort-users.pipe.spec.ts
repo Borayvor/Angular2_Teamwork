@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { SortedUserPipe } from './sorted-user.pipe';
+import { SortUsersPipe } from './sort-users.pipe';
 
-describe('SortedUserPipe', () => {
+describe('SortUsersPipe', () => {
   it('create an instance', () => {
-    let pipe = new SortedUserPipe();
+    let pipe = new SortUsersPipe();
     expect(pipe).toBeTruthy();
   });
 });

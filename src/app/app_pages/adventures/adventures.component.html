@@ -44,8 +44,6 @@
     </th>
   </thead>
   <tbody>
-    <!--<tr app-adventure-data *ngFor="let adventure of (pagedAdventures | fillterAdventures:filterText | sortAdventures:[sortBy, orderDesc])"
-      [adventure]="adventure"></tr>-->
     <tr app-adventure-data *ngFor="let adventure of pagedAdventures" [adventure]="adventure"></tr>
   </tbody>
 </table>

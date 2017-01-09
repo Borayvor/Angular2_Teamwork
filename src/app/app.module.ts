@@ -7,8 +7,10 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 // Pipes
+import { FillterAdventuresPipe } from './app_core/pipes/fillter-adventures.pipe';
+import { SortAdventuresPipe } from './app_core/pipes/sort-adventures.pipe';
 import { FilterUsersPipe } from './app_core/pipes/filter-users.pipe';
-import { SortedUserPipe } from './app_core/pipes/sorted-user.pipe';
+import { SortUsersPipe } from './app_core/pipes/sort-users.pipe';
 
 // directives
 import { LoginDirective } from './app_core/directives/login.directive';
@@ -41,8 +43,6 @@ import { AdventuresComponent } from './app_pages/adventures/adventures.component
 import { AdventureDataComponent } from './app_pages/adventures/adventure-data/adventure-data.component';
 import { AdventureCreateComponent } from './app_pages/adventure-create/adventure-create.component';
 import { AddSnapshotsComponent } from './app_pages/adventure-create/add-snapshots/add-snapshots.component';
-import { SortAdventuresPipe } from './app_core/pipes/sort-adventures.pipe';
-import { FillterAdventuresPipe } from './app_core/pipes/fillter-adventures.pipe';
 import { NotFoundComponent } from './app_pages/not-found/not-found.component';
 
 @NgModule({
@@ -65,17 +65,17 @@ import { NotFoundComponent } from './app_pages/not-found/not-found.component';
     AdventuresComponent,
     AdventureDataComponent,
     AdventureCreateComponent,
-    SortedUserPipe,
+    SortUsersPipe,
     SortAdventuresPipe,
     FillterAdventuresPipe,
     NotFoundComponent,
-    AddSnapshotsComponent,
+    AddSnapshotsComponent    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [
     BaseService,
@@ -85,7 +85,7 @@ import { NotFoundComponent } from './app_pages/not-found/not-found.component';
     AuthenticationService,
     AdventureService,
     UploadPhotoService,
-    PagerService,
+    PagerService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,12 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../app_core/services/user.service';
 import { PagerService } from './../../app_core/services/pager.service';
 
+import { FilterUsersPipe } from './../../app_core/pipes/filter-users.pipe';
+import { SortUsersPipe } from './../../app_core/pipes/sort-users.pipe';
+
 import { UserProfileModel } from './../../app_core/models/user-profile.model';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
+  providers: [FilterUsersPipe, SortUsersPipe]
 })
 export class UsersComponent implements OnInit {
   private title: string;
@@ -20,10 +24,15 @@ export class UsersComponent implements OnInit {
   private orderDesc: string;
   private pager: any = {};
   private pagedUsers: any[];
+  private currentPage: number;
+  private filteredUsers: UserProfileModel[];
+  private sortedUsers: UserProfileModel[];
 
   constructor(
     private userService: UserService,
-    private pagerService: PagerService
+    private pagerService: PagerService,
+    private filterUsersPipe: FilterUsersPipe,
+    private sortUsersPipe: SortUsersPipe
   ) { }
 
   ngOnInit() {
@@ -34,12 +43,19 @@ export class UsersComponent implements OnInit {
     this.getAllUsers();
   }
 
+  onInput(ev: any) {
+    this.filterText = ev.target.value;
+    this.setPage(this.currentPage);
+  }
+
   onSortChange(ev: any) {
     this.sortBy = ev.target.value;
+    this.setPage(this.currentPage);
   }
 
   onOrderChange(ev: any) {
     this.orderDesc = ev.target.value;
+    this.setPage(this.currentPage);
   }
 
   getAllUsers() {
@@ -52,20 +68,21 @@ export class UsersComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
       );
-  }
+  }  
 
-  onInput(ev: any) {
-    this.filterText = ev.target.value;
-  }
-
-  setPage(page: number) {
+  setPage(page: number, pageSize: number = 2) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
 
-    this.pager = this.pagerService.getPager(this.users.length, page, 2);
+    this.currentPage = page;
 
-    this.pagedUsers = this.users.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.filteredUsers = this.filterUsersPipe.transform(this.users, this.filterText);
+    this.sortedUsers = this.sortUsersPipe.transform(this.filteredUsers, [this.sortBy, this.orderDesc]);
+
+    this.pager = this.pagerService.getPager(this.sortedUsers.length, page, 2);
+
+    this.pagedUsers = this.sortedUsers.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
 }

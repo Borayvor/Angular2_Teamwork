@@ -25,7 +25,7 @@ export class AdventuresComponent implements OnInit {
   private pager: any = {};
   private pagedAdventures: any[];
   private currentPage: number;
-  private filteredArray: AdventureHomeModel[];
+  private filteredAdventures: AdventureHomeModel[];
   private sortedAdventures: AdventureHomeModel[];
 
   constructor(
@@ -77,8 +77,8 @@ export class AdventuresComponent implements OnInit {
 
     this.currentPage = page;
 
-    this.filteredArray = this.fillterAdventuresPipe.transform(this.adventures, this.filterText);
-    this.sortedAdventures = this.sortAdventuresPipe.transform(this.filteredArray, [this.sortBy, this.orderDesc]);
+    this.filteredAdventures = this.fillterAdventuresPipe.transform(this.adventures, this.filterText);
+    this.sortedAdventures = this.sortAdventuresPipe.transform(this.filteredAdventures, [this.sortBy, this.orderDesc]);
 
     this.pager = this.pagerService.getPager(this.sortedAdventures.length, page, pageSize);
 

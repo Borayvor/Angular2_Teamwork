@@ -1,6 +1,7 @@
 <div class="snapshot" *ngIf="snapshot">
+  <h5 class="text-center">Snapshot {{index + 1}}</h5>
   <div [ngClass]="{ 'has-error': f.submitted && !name.valid }" class="form-group row">
-    <label for="app-create-adventure-name" class="col-sm-2 control-label">Name_{{index}}</label>
+    <label for="app-create-adventure-name" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
       <input required [(ngModel)]="snapshot.name" #name="ngModel" id="app-create-adventure-name" class="form-control"
         type="text" name="name{{index}}" value="">

@@ -3,16 +3,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { UserProfileModel } from './../models/user-profile.model';
 
 @Pipe({
-  name: 'sortedUser'
+  name: 'sortUsers'
 })
-export class SortedUserPipe implements PipeTransform {
+export class SortUsersPipe implements PipeTransform {
 
-  transform(items: UserProfileModel[], parameters: any[]): UserProfileModel[] {
-    if (!items) {
+  transform(users: UserProfileModel[], parameters: any[]): UserProfileModel[] {
+    if (!users) {
             return [];
         }
 
-        return items.sort((a, b) => {
+        return users.sort((a, b) => {
             switch (parameters[0]) {
                 case 'Email':
                     return parameters[1] === 'asc' ?
