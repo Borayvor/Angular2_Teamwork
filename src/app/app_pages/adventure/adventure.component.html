@@ -6,7 +6,10 @@
     </h2>
   </div>
 </div>
-<div *ngIf="user">
+<div class="text-center bg-warning">
+    Click on panel below for next snapshot.
+  </div>
+<div *ngIf="user">  
   <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [isShow]="isShowSnapshot" [position]="currentPosition"
     (show)="onShow($event)" [author]="user.email"></app-snapshot>
 </div>
