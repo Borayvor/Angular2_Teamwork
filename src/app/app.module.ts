@@ -13,8 +13,7 @@ import { FilterUsersPipe } from './app_core/pipes/filter-users.pipe';
 import { SortUsersPipe } from './app_core/pipes/sort-users.pipe';
 
 // directives
-import { LoginDirective } from './app_core/directives/login.directive';
-import { ChangeStateDirective } from './app_core/directives/change-state.directive';
+import { AppFileSelectDirective } from './app_core/directives/app-file-select.directive';
 
 //Services
 import { BaseService } from './app_core/services/base.service';
@@ -44,14 +43,15 @@ import { AdventureDataComponent } from './app_pages/adventures/adventure-data/ad
 import { AdventureCreateComponent } from './app_pages/adventure-create/adventure-create.component';
 import { AddSnapshotsComponent } from './app_pages/adventure-create/add-snapshots/add-snapshots.component';
 import { NotFoundComponent } from './app_pages/not-found/not-found.component';
+import { FooterComponent } from './app_component/footer/footer.component';
+import { NavigationComponent } from './app_component/navigation/navigation.component';
 
 @NgModule({
-  declarations: [    
+  declarations: [
     FilterUsersPipe,
-    LoginDirective,
-    ChangeStateDirective,
+    AppFileSelectDirective,
     AppComponent,
-    HomeComponent,    
+    HomeComponent,
     RegisterComponent,
     LoginComponent,
     UserDetailsComponent,
@@ -69,7 +69,9 @@ import { NotFoundComponent } from './app_pages/not-found/not-found.component';
     SortAdventuresPipe,
     FillterAdventuresPipe,
     NotFoundComponent,
-    AddSnapshotsComponent    
+    AddSnapshotsComponent,
+    FooterComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

@@ -10,11 +10,18 @@
   width: 200px;
 }
 
-.panel-body{
-    background-color: #F5F5F5;
+.panel-body {
+  background-color: #F5F5F5;
 }
 
 .panel-footer {
   color: #3C763D;
 }
 
+#loading {
+  display: block;
+  position: fixed;
+  top: 45%;
+  left: 45%;
+  width: 100px;
+}

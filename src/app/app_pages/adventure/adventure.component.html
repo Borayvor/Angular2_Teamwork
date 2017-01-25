@@ -1,4 +1,3 @@
-<ng-content></ng-content>
 <div *ngIf="adventure" class="panel panel-default">
   <div class="panel-heading">
     <h2 class="text-center">
@@ -7,9 +6,9 @@
   </div>
 </div>
 <div class="text-center bg-warning">
-    Click on panel below for next snapshot.
-  </div>
-<div *ngIf="user">  
+  Click on panel below for next snapshot.
+</div>
+<div *ngIf="user">
   <app-snapshot *ngFor="let snapshot of snapshots" [adventureDataModel]="snapshot" [isShow]="isShowSnapshot" [position]="currentPosition"
     (show)="onShow($event)" [author]="user.email"></app-snapshot>
 </div>
